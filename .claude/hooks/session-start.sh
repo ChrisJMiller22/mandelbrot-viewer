@@ -7,3 +7,4 @@ fi
 
 cd "$CLAUDE_PROJECT_DIR"
 npm install
+chmod +x node_modules/.bin/*
