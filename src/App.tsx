@@ -9,10 +9,10 @@ const LABELS: Record<SetType, string> = {
 };
 
 const INITIAL_VIEWPORTS: Record<SetType, Viewport> = {
-  'mandelbrot':   { xCenter: -0.75, yCenter:  0.00, xRange: 3.5 },
-  'burning-ship': { xCenter: -0.50, yCenter: -0.50, xRange: 3.5 },
-  'tricorn':      { xCenter:  0.00, yCenter:  0.00, xRange: 4.5 },
-  'julia':        { xCenter:  0.00, yCenter:  0.00, xRange: 3.5 },
+  'mandelbrot':   { xCenter: '-0.75', yCenter: '0',    xRange: '3.5' },
+  'burning-ship': { xCenter: '-0.5',  yCenter: '-0.5', xRange: '3.5' },
+  'tricorn':      { xCenter: '0',     yCenter: '0',    xRange: '4.5' },
+  'julia':        { xCenter: '0',     yCenter: '0',    xRange: '3.5' },
 };
 
 const SET_TYPES: SetType[] = ['mandelbrot', 'burning-ship', 'tricorn', 'julia'];
