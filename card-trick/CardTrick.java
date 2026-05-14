@@ -72,20 +72,26 @@ public class CardTrick {
         printList(stack1);
 
         // ── Step 5: Deal in pairs, random flip choice per pair ───────────────
-        // For each pair of cards from the top of stack1, randomly flip both or neither,
-        // then deal (top card first) onto stack2.
+        // Flipping a pair is a PHYSICAL PACKET FLIP: both cards flip individually
+        // AND their order within the pair swaps (bottom card comes to top).
         List<Card> stack2 = new ArrayList<>();
         System.out.println("\n══ Step 5: Pair dealing ══");
         for (int i = 0; i < stack1.size(); i += 2) {
             Card c1 = stack1.get(i).copy();     // top of pair
             Card c2 = stack1.get(i + 1).copy(); // bottom of pair
             boolean flip = rand.nextBoolean();
-            if (flip) { c1.flip(); c2.flip(); }
             System.out.printf("  Pair %d: [%s, %s] → %s%n",
                     (i / 2) + 1, c1, c2, flip ? "FLIPPED" : "kept");
-            // Deal c1 first, then c2 on top of stack2
-            stack2.add(0, c1);
-            stack2.add(0, c2); // c2 ends up on top
+            if (flip) {
+                // Packet flip: c2 becomes top (flipped), c1 becomes bottom (flipped)
+                c1.flip(); c2.flip();
+                stack2.add(0, c2); // c2 goes down first
+                stack2.add(0, c1); // c1 ends up on top
+            } else {
+                // Normal deal: c1 first, c2 on top
+                stack2.add(0, c1);
+                stack2.add(0, c2); // c2 ends up on top
+            }
         }
         System.out.print("  stack2 → ");
         printList(stack2);
